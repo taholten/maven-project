@@ -18,7 +18,7 @@ pipeline {
             post {
                 success {
                     echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
+                    archiveArtifacts artifacts: '**/target/*.war''
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "copy -i E:\\Dropbox\\aws\\keys\\tomcat-demo.pem **\\target\\*.war ec2-user\@${params.tomcat_dev}:\\var\\lib\\tomcat7\\webapps"
+                        bat "copy -i \"E:\\Dropbox\\aws\\keys\\tomcat-demo.pem\" \"**\\target\\*.war\" \"ec2-user\@${params.tomcat_dev}:\\var\\lib\\tomcat7\\webapps\"""
                     }
                 }
 
